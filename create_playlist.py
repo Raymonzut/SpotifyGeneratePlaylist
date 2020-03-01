@@ -45,6 +45,7 @@ class CreatePlaylist:
             myRating="like"
         )
         response = request.execute()
+        ResponseValidator(response)
 
         # collect each video and get important information
         for item in response["items"]:
@@ -88,6 +89,7 @@ class CreatePlaylist:
                 "Authorization": "Bearer {}".format(spotify_token)
             }
         )
+        ResponseValidator(response)
         response_json = response.json()
 
         # playlist id
@@ -106,6 +108,7 @@ class CreatePlaylist:
                 "Authorization": "Bearer {}".format(spotify_token)
             }
         )
+        ResponseValidator(response)
         response_json = response.json()
         songs = response_json["tracks"]["items"]
 
